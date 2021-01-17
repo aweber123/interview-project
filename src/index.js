@@ -4,9 +4,24 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { Provider as ReduxProvider } from 'react-redux';
+import { Provider as StyletronProvider } from "styletron-react";
+import { Client as Styletron } from "styletron-engine-atomic";
+import { BaseProvider, LightTheme } from 'baseui';
+
+import { configureStore } from './store';
+
+const engine = new Styletron();
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <StyletronProvider value={engine}>
+      <BaseProvider theme={LightTheme}>
+        <ReduxProvider store={configureStore()}>
+          <App />
+        </ReduxProvider>
+      </BaseProvider>
+    </StyletronProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

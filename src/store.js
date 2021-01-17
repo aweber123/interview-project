@@ -11,7 +11,10 @@ export function configureStore() {
   return createStore(
     reducer,
     composeEnhancers(
-      applyMiddleware(thunk, logger),
+      applyMiddleware(
+        thunk, 
+        // logger
+        ),
     ),
   );
 };

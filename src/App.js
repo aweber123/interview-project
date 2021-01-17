@@ -8,8 +8,11 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <CountryList />
-      <CountryDetails />
+      <div> 
+        {/* Eventually use react-router here */}
+        <CountryList />
+        <CountryDetails />
+      </div>
     </div>
   );
 }

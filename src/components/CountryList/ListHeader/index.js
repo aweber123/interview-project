@@ -3,28 +3,37 @@ import { Input } from 'baseui/input';
 import { Select } from "baseui/select";
 
 
-const ListHeader = () => {
-  const [value, setValue] = React.useState();
-
+const ListHeader = ({filters, setFilters}) => {
   return(
     <div>
       <Input
-        value={value}
-        onChange={e => console.log(e.target.value)}
+        value={filters.searchParam || ""}
+        onChange={e => setFilters({
+          region: null,
+          searchParam: e.target.value,
+        })}
         placeholder="Search for a Country"
         clearOnEscape
       />
       <Select
         options={[
-          { label: "Africa", id: "africa" },
-          { label: "America", id: "america" },
-          { label: "Asia", id: "asia" },
-          { label: "Europe", id: "europe" },
-          { label: "Oceania", id: "oceania" }
+          { label: "Africa"},
+          { label: "Americas"},
+          { label: "Asia"},
+          { label: "Europe"},
+          { label: "Oceania"}
         ]}
-        value={value}
+        searchable={false}
+        labelKey="label"
+        valueKey="label"
         placeholder="Filter by Region"
-        onChange={params => console.log(params.value[0].id)}
+        onChange={({value}) => {
+          setFilters({
+            region: value,
+            searchParam: null
+          })}
+        }
+        value={filters.region || ""}
       />
     </div>
   )

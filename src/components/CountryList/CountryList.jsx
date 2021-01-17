@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import _ from 'lodash';
+
 import ListHeader from './ListHeader';
 
-const fakeList = [
-  {country: "USA", populatin: 1234, capital: "Washington D.C."},
-  {country: "USA2", populatin: 1234, capital: "Washington D.C."}
-];
+const CountryList = ({countries, getCountryList}) => {
+  const [filters, setFilters] = React.useState({searchParam: null, region: null});
 
-const CountryList = () => {
-  const countryThumbnail = ({country}) => (<div>{country}</div>);
-  
+  useEffect(() => {
+    getCountryList();
+  }, [getCountryList])
+
+  useEffect(() => {
+    const region = _.get(filters, 'region[0].label');
+    getCountryList(filters.searchParam, region)
+  }, [filters, getCountryList])
+
+  const countryThumbnail = (country) => {
+    return (<div key={country.name}>{country.name}</div>)
+  };
+    
   const renderCountries = (countryList) => {
     let result = [];
     countryList.forEach((country) => {
@@ -17,12 +27,14 @@ const CountryList = () => {
     return result;
   }
 
-  return (<div>
-    <ListHeader />
+  return (
     <div>
-      {renderCountries(fakeList)}
+      <ListHeader filters={filters} setFilters={setFilters} />
+      <div>
+        {renderCountries(countries)}
+      </div>
     </div>
-  </div>)
-};
+  )
+}
 
 export default CountryList;

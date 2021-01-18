@@ -7,12 +7,7 @@ const CountryList = ({countries, getCountryList}) => {
   const [filters, setFilters] = React.useState({searchParam: null, region: null});
 
   useEffect(() => {
-    getCountryList();
-  }, [getCountryList])
-
-  useEffect(() => {
-    const region = _.get(filters, 'region[0].label');
-    getCountryList(filters.searchParam, region)
+    getCountryList(filters.searchParam,  _.get(filters, 'region[0].label'))
   }, [filters, getCountryList])
 
   const countryThumbnail = (country) => {

@@ -13,7 +13,7 @@ export function configureStore() {
     composeEnhancers(
       applyMiddleware(
         thunk, 
-        // logger
+        logger
         ),
     ),
   );

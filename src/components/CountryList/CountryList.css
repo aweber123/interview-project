@@ -1,0 +1,28 @@
+.list-container {
+  margin: 25px;
+}
+
+.country-thumbnail {
+  display: inline-block;
+  margin: 40px;
+}
+
+.country-thumbnail > .image-container > img {
+  width: 100%;
+  height: 100%;
+  width: 260px;
+  height: 170px;
+}
+
+.country-thumbnail .country-info {
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: left;
+}
+
+.country-thumbnail .country-info .country-name{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: large;
+  text-align: left;
+}

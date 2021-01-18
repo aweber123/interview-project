@@ -14,7 +14,7 @@ export function configureStore() {
       applyMiddleware(
         thunk, 
         logger
-        ),
+      ),
     ),
   );
 };

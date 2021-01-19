@@ -4,7 +4,8 @@ import { successAction, errorAction } from 'actions/helpers/action';
 export const COUNTRY_ACTIONS = {
   COUNTRY_LIST_SUCCESS: "COUNTRY_LIST_SUCCESS",
   COUNTRY_LIST_FAILURE: "COUNTRY_LIST_FAILURE",
-  GET_COUNTRY_DETAILS: "GET_COUNTRY_DETAILS",
+  COUNTRY_DETAILS_SUCCESS: "COUNTRY_DETAILS_SUCCESS",
+  COUNTRY_DETAILS_FAILURE: "COUNTRY_DETAILS_FAILURE",
 };
 
 const axiosInstance = axios.create({
@@ -12,6 +13,7 @@ const axiosInstance = axios.create({
 })
 
 const countryListFilter = '?fields=name;flag;region;capital;population'
+const countryDetailsFilter = '?fields=name;flag;region;capital;population;subregion;nativeName;topLevelDomain;currencies;languages;borders'
 
 export const getCountryList = (searchParam, region) => async (dispatch) => {
   try {
@@ -37,12 +39,12 @@ export const getCountryList = (searchParam, region) => async (dispatch) => {
   }
 }
 
-export const getCountryDetailsById = (email, password) => async (dispatch) => {
+export const getCountryDetails = (countryName) => async (dispatch) => {
   try {
-    const result = await axiosInstance.post('/account', { email, password });
-    return dispatch(successAction(COUNTRY_ACTIONS.asdf, result))
+    const result = await axiosInstance.get(`/name/${countryName}` + countryDetailsFilter);
+    return dispatch(successAction(COUNTRY_ACTIONS.COUNTRY_DETAILS_SUCCESS, result))
   } catch(e) {
-    return dispatch(errorAction(COUNTRY_ACTIONS.asdf, e))
+    return dispatch(errorAction(COUNTRY_ACTIONS.COUNTRY_DETAILS_FAILURE, e))
   }
 }
 

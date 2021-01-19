@@ -1,15 +1,11 @@
 import React from 'react';
-import {useStyletron} from 'baseui';
 import { Input } from 'baseui/input';
 import { Select } from "baseui/select";
 import './ListHeader.css';
 
 const ListHeader = ({filters, setFilters}) => {
-  const [css, theme] = useStyletron();
-
   return(
     <div className={'list-header'}>
-      
       <div className={'search-container'}>
         <Input
           value={filters.searchParam || ""}

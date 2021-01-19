@@ -1,14 +1,21 @@
-import React from "react"
+import React from "react";
+import './Header.css';
 
 const Header = () => {
-  return (<div>
-    Where in the world?
-    <button>
-      Dark Mode
-    </button>
-    <button>
-      Light Mode
-    </button>
+  return (<div className="header">
+    <div className="header-content">
+      <div className="title">
+        Where in the world?
+      </div>
+      <div className="color-mode">
+        <button>
+          Dark Mode
+        </button>
+        <button>
+          Light Mode
+        </button>
+      </div>
+    </div>
   </div>)
 }
 

@@ -14,16 +14,18 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Router>
-        <Switch>
-          <Route path="/:id">
-            <CountryDetails />
-          </Route>
-          <Route path="/">
-            <CountryList />
-          </Route>
-        </Switch>
-      </Router>
+      <div className="body">
+        <Router>
+          <Switch>
+            <Route path="/:country">
+              <CountryDetails />
+            </Route>
+            <Route path="/">
+              <CountryList />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
     </div>
   );
 }

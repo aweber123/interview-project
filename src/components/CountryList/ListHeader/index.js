@@ -1,6 +1,8 @@
 import React from 'react';
 import { Input } from 'baseui/input';
 import { Select } from "baseui/select";
+import Search from "baseui/icon/search";
+
 import './ListHeader.css';
 
 const ListHeader = ({filters, setFilters}) => {
@@ -15,10 +17,10 @@ const ListHeader = ({filters, setFilters}) => {
           })}
           placeholder="Search for a Country"
           clearOnEscape
+          startEnhancer={<Search size={24} />}
           overrides={{
             Root: {
-              style: {
-                display: 'inline-block', 
+              style: { 
                 width: '500px',
                 position: 'relative',
                 float: 'left'

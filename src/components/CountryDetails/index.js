@@ -2,16 +2,18 @@ import { connect } from 'react-redux';
 
 import CountryDetails from './CountryDetails.jsx';
 
-import { getCountryDetails } from 'actions';
+import { getCountryDetails, getCountryNamesByCode } from 'actions';
 
 const mapStateToProps = (state) => {
   return {
-    details: state.CountryReducer.details
+    details: state.CountryReducer.details,
+    borders: state.CountryReducer.borders,
   }
 }
 
 const mapDispatchToProps = {
-  getCountryDetails
+  getCountryDetails,
+  getCountryNamesByCode
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CountryDetails);

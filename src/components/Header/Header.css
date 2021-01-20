@@ -12,7 +12,9 @@
   font-size: 24px;
   font-weight: 800;
   float: left;
+  padding-left: 25px;
 }
 .header-content > .color-mode {
   float: right;
+  padding-right: 25px;
 }

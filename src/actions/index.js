@@ -53,10 +53,9 @@ export const getCountryDetails = (countryName) => async (dispatch) => {
 
 export const getCountryNamesByCode = (countryCodes) => async (dispatch) => {
   try {
-    const result = await axiosInstance.get('/alpha' + countryCodeName(countryCodes));
+    const result = await axiosInstance.get('/alpha' + countryCodeName(countryCodes.join(';')));
     return dispatch(successAction(COUNTRY_ACTIONS.COUNTRY_NAMES_SUCCESS, result))
   } catch(e) {
     return dispatch(errorAction(COUNTRY_ACTIONS.COUNTRY_NAMES_FAILURE, e))
   }
 }
-

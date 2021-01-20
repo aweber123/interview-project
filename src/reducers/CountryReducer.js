@@ -2,7 +2,8 @@ import { COUNTRY_ACTIONS } from 'actions';
 
 const base = {
   list: [], 
-  details: {}
+  details: {},
+  borders: []
 };
 
 const CountryReducer = (state = base, {type, payload}) => {
@@ -16,6 +17,18 @@ const CountryReducer = (state = base, {type, payload}) => {
     state = {
       ...state,
       details: payload.data[0]
+    }
+  }
+  if (type === COUNTRY_ACTIONS.COUNTRY_NAMES_SUCCESS) {
+    state = {
+      ...state,
+      borders: payload.data
+    }
+  }
+  if (type === COUNTRY_ACTIONS.COUNTRY_NAMES_FAILURE) {
+    state = {
+      ...state,
+      borders: []
     }
   }
   

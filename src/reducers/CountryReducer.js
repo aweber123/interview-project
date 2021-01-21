@@ -13,10 +13,22 @@ const CountryReducer = (state = base, {type, payload}) => {
       list: payload.data
     }
   }
+  if (type === COUNTRY_ACTIONS.COUNTRY_LIST_FAILURE) {
+    state = {
+      ...state,
+      list: []
+    }
+  }
   if (type === COUNTRY_ACTIONS.COUNTRY_DETAILS_SUCCESS) {
     state = {
       ...state,
       details: payload.data[0]
+    }
+  }
+  if (type === COUNTRY_ACTIONS.COUNTRY_DETAILS_FAILURE) {
+    state = {
+      ...state,
+      details: {}
     }
   }
   if (type === COUNTRY_ACTIONS.COUNTRY_NAMES_SUCCESS) {

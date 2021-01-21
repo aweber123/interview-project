@@ -21,9 +21,7 @@ const ListHeader = ({filters, setFilters}) => {
           overrides={{
             Root: {
               style: { 
-                width: '500px',
-                position: 'relative',
-                float: 'left'
+                width: '500px'
               }
             }
           }}

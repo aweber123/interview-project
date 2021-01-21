@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
+import classNames from 'classnames';
 import { useHistory } from 'react-router-dom'
 import _ from 'lodash';
 
@@ -9,7 +10,7 @@ const numberWithCommas = (x) => {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-const CountryList = ({countries, getCountryList}) => {
+const CountryList = ({countries, getCountryList, theme}) => {
   const [filters, setFilters] = React.useState({searchParam: null, region: null});
   const history = useHistory();
   const handleOnClick = useCallback(({name}) => history.push(`${name}`), [history]);
@@ -21,7 +22,11 @@ const CountryList = ({countries, getCountryList}) => {
   const countryThumbnail = (country) => {
     return (
       <div 
-        className={"country-thumbnail"} 
+        className={classNames({
+          "country-thumbnail": true,
+          'dark-elements': theme === "dark",
+          'light-elements': theme === "light",
+        })} 
         key={country.name} 
         onClick={() => handleOnClick(country)}
       >

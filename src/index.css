@@ -1,7 +1,29 @@
 body {
   margin: 0;
   font-family: 'Nunito Sans', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #fafafa;
+}
+
+.dark-background {
+  background-color: #202c37
+}
+
+.light-background {
   background-color: #fafafa
+}
+
+.dark-text {
+  color: #ffffff
+}
+
+.light-text {
+  color: #111517
+}
+
+.dark-elements {
+  background-color: #2b3945
+}
+
+.light-elements {
+  background-color: #ffffff
 }
